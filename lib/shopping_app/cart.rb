@@ -12,7 +12,6 @@ class Cart
 
   def items
     # Cartにとってのitemsは自身の@itemsとしたいため、ItemManagerのitemsメソッドをオーバーライドします。
-    # super
     # CartインスタンスがItemインスタンスを持つときは、オーナー権限の移譲をさせることなく、自身の@itemsに格納(Cart#add)するだけだからです。
     @items
   end
@@ -44,7 +43,7 @@ class Cart
     while 0 < index
       index -= 1
       if items[index] == customer.cart.items[index]
-        items.delete_at(index)
+        customer.cart.items.delete_at(index)
       end
     end
 
