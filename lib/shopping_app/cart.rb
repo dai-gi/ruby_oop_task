@@ -12,7 +12,7 @@ class Cart
 
   def items
     # Cartにとってのitemsは自身の@itemsとしたいため、ItemManagerのitemsメソッドをオーバーライドします。
-    super
+    # super
     # CartインスタンスがItemインスタンスを持つときは、オーナー権限の移譲をさせることなく、自身の@itemsに格納(Cart#add)するだけだからです。
     @items
   end
@@ -35,24 +35,18 @@ class Cart
 
     #   - カートの中身（Cart#items）のすべてのアイテムのオーナー権限が、カートのオーナーに移されること。
     customer = self.owner
-    # 購入したアイテムの権限を変更
     items.map do |item|
       item.owner = customer
     end
 
     #   - カートの中身（Cart#items）が空になること。
-    # items.map do |item|
-    #   customer.cart.items.map do |cart_item|
-    #     if item == cart_item
-    #       item.delete
-    #     end
-    #   end
-    # end
-
-    puts "customerの所持アイテム"
-    puts items
-    puts "カートの所持アイテム"
-    puts customer.cart.items
+    index = customer.cart.items.length
+    while 0 < index
+      index -= 1
+      if items[index] == customer.cart.items[index]
+        items.delete_at(index)
+      end
+    end
 
   # ## ヒント
   #   - カートのオーナーのウォレット ==> self.owner.wallet
