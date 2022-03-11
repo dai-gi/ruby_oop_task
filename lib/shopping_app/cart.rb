@@ -44,6 +44,7 @@ class Cart
       index -= 1
       if items[index] == customer.cart.items[index]
         customer.cart.items.delete_at(index)
+        items.delete_at(index)
       end
     end
 
