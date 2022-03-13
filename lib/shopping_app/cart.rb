@@ -39,16 +39,17 @@ class Cart
     end
 
     #   - カートの中身（Cart#items）が空になること。
-    index = customer.cart.items.length
-    while 0 < index
-      index -= 1
-      if items[index] == customer.cart.items[index]
-        customer.cart.items.delete_at(index)
-        items.delete_at(index)
+    cart_items = customer.cart.items
+    cart_quantity = cart_items.length
+    count = 0
+    while count < cart_quantity
+      if items[0] == cart_items[0]
+        cart_items.delete_at(0)
       end
+      count += 1
     end
 
-  # ## ヒント
+      # ## ヒント
   #   - カートのオーナーのウォレット ==> self.owner.wallet
   #   - アイテムのオーナーのウォレット ==> item.owner.wallet
   #   - お金が移されるということ ==> (？)のウォレットからその分を引き出して、(？)のウォレットにその分を入金するということ
