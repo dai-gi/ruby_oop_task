@@ -39,15 +39,7 @@ class Cart
     end
 
     #   - カートの中身（Cart#items）が空になること。
-    cart_items = customer.cart.items
-    cart_quantity = cart_items.length
-    count = 0
-    while count < cart_quantity
-      if items[0] == cart_items[0]
-        cart_items.delete_at(0)
-      end
-      count += 1
-    end
+    customer.cart.items.clear
 
       # ## ヒント
   #   - カートのオーナーのウォレット ==> self.owner.wallet
