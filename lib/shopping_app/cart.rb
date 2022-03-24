@@ -39,7 +39,10 @@ class Cart
     end
 
     #   - カートの中身（Cart#items）が空になること。
-    customer.cart.items.clear
+    items.clear
+
+    # puts " ------ 「Cart#items」の中身が空になっているか確認 ------ "
+    # p customer.cart
 
       # ## ヒント
   #   - カートのオーナーのウォレット ==> self.owner.wallet
